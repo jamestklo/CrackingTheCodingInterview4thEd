@@ -121,14 +121,15 @@ public class BinaryTreeNode {
 					return null;
 				}
 			}
+			BinaryTreeNode first = null;
 			if (root.left != null) {
-				BinaryTreeNode first = this.find(root.left, p, q);
+				first = this.find(root.left, p, q);
 				if (first != null) {
 					return first;
 				}
 			}
 			if (nodesFound < 2 && root.right != null) {
-				BinaryTreeNode first = this.find(root.right, p, q);
+				first = this.find(root.right, p, q);
 				if (first != null) {
 					return first;
 				}
