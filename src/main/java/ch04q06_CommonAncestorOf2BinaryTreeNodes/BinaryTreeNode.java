@@ -92,13 +92,13 @@ public class BinaryTreeNode {
 			}
 		}
 		if (this.left != null) {
-			BinaryTreeNode first = this.left.firstCommonAncestorRecursive(p, q);
+			BinaryTreeNode first = this.left.firstCommonAncestorRecursive(p, q, nodesFound);
 			if (first != null) {
 				return first;
 			}
 		}
 		if (nodesFound < 2 && this.right != null) {
-			BinaryTreeNode first = this.right.firstCommonAncestorRecursive(p, q);
+			BinaryTreeNode first = this.right.firstCommonAncestorRecursive(p, q, nodesFound);
 			if (first != null) {
 				return first;
 			}
