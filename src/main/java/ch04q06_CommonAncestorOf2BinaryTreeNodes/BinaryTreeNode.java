@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /*
- * James Lo (C) 2013.  All rights reserved.
+ * James TK Lo (C) 2013.  All rights reserved.  https://github.com/jamestklo
  * Personal implementation(s) in Java, for finding the first common ancestor between 2 nodes in a binary tree
  *
 Cracking The Coding Interview 4th Edition, Question 4.6
