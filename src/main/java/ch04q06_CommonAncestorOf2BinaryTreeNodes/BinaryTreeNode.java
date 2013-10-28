@@ -85,7 +85,7 @@ public class BinaryTreeNode {
 	};
 	  
 	private static int nodesFound = 0;
-	private BinaryTreeNode firstCommonAncestorRecursive(BinaryTreeNode p, BinaryTreeNode q) {    
+	private BinaryTreeNode firstCommonAncestorRecursive(BinaryTreeNode p, BinaryTreeNode q, int startFound) {    
 		if (this.equals(p) || this.equals(q)) {
 			if (++nodesFound == 2) {
 				return null;
@@ -103,7 +103,7 @@ public class BinaryTreeNode {
 				return first;
 			}
 		}
-		if (nodesFound == 2) {
+		if (nodesFound == 2 && startFound == 0) {
 			nodesFound = 0;
 			return this;	 
 		}
@@ -111,12 +111,12 @@ public class BinaryTreeNode {
 	}   
 	public BinaryTreeNode firstCommonAncestor2(BinaryTreeNode p, BinaryTreeNode q) {
 		nodesFound = 0;
-		return this.firstCommonAncestorRecursive(p, q);
+		return this.firstCommonAncestorRecursive(p, q, 0);
 	}
 	  
 	private static class FinderOfFirstCommonAncestor {
 		private int nodesFound = 0;
-		public BinaryTreeNode find(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q) {
+		public BinaryTreeNode find(BinaryTreeNode root, BinaryTreeNode p, BinaryTreeNode q, int startFound) {
 			if (root.equals(p) || root.equals(q)) {
 				if (++nodesFound == 2) {
 					return null;
@@ -124,18 +124,18 @@ public class BinaryTreeNode {
 			}
 			BinaryTreeNode first = null;
 			if (root.left != null) {
-				first = this.find(root.left, p, q);
+				first = this.find(root.left, p, q, nodesFound);
 				if (first != null) {
 					return first;
 				}
 			}
 			if (nodesFound < 2 && root.right != null) {
-				first = this.find(root.right, p, q);
+				first = this.find(root.right, p, q, nodesFound);
 				if (first != null) {
 					return first;
 				}
 			}
-			if (nodesFound == 2) {
+			if (nodesFound == 2 && startFound == 0) {
 				nodesFound = 0;
 				return root;
 			}
@@ -144,7 +144,7 @@ public class BinaryTreeNode {
 	}
 	public BinaryTreeNode firstCommonAncestor2a(BinaryTreeNode p, BinaryTreeNode q) {
 		FinderOfFirstCommonAncestor finder = new FinderOfFirstCommonAncestor();
-		return finder.find(this, p, q);
+		return finder.find(this, p, q, 0);
 	}
 	  
 	public static void main(String[] args) {
