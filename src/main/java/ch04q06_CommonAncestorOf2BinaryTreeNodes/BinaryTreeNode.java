@@ -12,14 +12,16 @@ Cracking The Coding Interview 4th Edition, Question 4.6
 Design an algorithm and write code to find the first common ancestor of two nodes in a binary tree.
 Avoid storing additional nodes in a data structure NOTE: This is not necessarily a binary search tree.
  *
+ * the book's best solution (attempt #3 in page 129) will likely run in O(n^2) time.
+ * 
  * this.firstCommonAncestor1(BinaryTreeNode p, BinaryTreeNode q) -> uses list of BinaryTreeNode's
  *   time  O(2n+log(n))
  *   space O(2*log(n))
  * this.firstCommonAncestor2(BinaryTreeNode p, BinaryTreeNode q) -> uses only 1 static int in BinaryTreeNode class
- *   time  < O(n), recursive post-order traversal
+ *   time  O(n), recursive post-order traversal
  *   space O(1)
  * this.firstCommonAncestor2a(BinaryTreeNode p, BinaryTreeNode q) -> uses an object-wrapper to replace static int
- *   time  < O(n), recursive post-order traversal
+ *   time  O(n), recursive post-order traversal
  *   space O(1)
  */
 
