@@ -38,17 +38,17 @@ public class BinaryTreeNode {
 			return p;
 		}
 		if (this.left != null) {
-	    		p = this.left.path(destination);
-	    		if (p != null) {
-	    			p.add(this);
-	    			return p;
-	    		}
-	    	}
-	    	if (this.right != null) {
-	    		p = this.right.path(destination);
-	    		if (p != null) {
-	    			p.add(this);
-	    			return p;
+			p = this.left.path(destination);
+			if (p != null) {
+				p.add(this);
+				return p;
+			}
+		}
+		if (this.right != null) {
+			p = this.right.path(destination);
+			if (p != null) {
+				p.add(this);
+				return p;
 			}
 		}
 		return null;
