@@ -37,23 +37,22 @@ public class BinaryTreeNode {
 			p.add(this);
 			return p;
 		}
-	  
-	    if (this.left != null) {
-	    	p = this.left.path(destination);
-	    	if (p != null) {
-	    		p.add(this);
-	    		return p;
+		if (this.left != null) {
+	    		p = this.left.path(destination);
+	    		if (p != null) {
+	    			p.add(this);
+	    			return p;
+	    		}
 	    	}
-	    }
-	    if (this.right != null) {
-	    	p = this.right.path(destination);
-	    	if (p != null) {
-	    		p.add(this);
-	    		return p;
-	    	}
-	    }
-	    return null;
-	  }
+	    	if (this.right != null) {
+	    		p = this.right.path(destination);
+	    		if (p != null) {
+	    			p.add(this);
+	    			return p;
+			}
+		}
+		return null;
+	}
 	  
 	private static BinaryTreeNode firstCommon(List<BinaryTreeNode> path1, List<BinaryTreeNode> path2, int diff) {
 		ListIterator<BinaryTreeNode> itr1 = path1.listIterator();
