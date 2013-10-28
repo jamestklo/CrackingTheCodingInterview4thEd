@@ -1,4 +1,8 @@
 CrackingTheCodingInterview4thEd
 ===============================
 
-James Lo's personal solutions to Gayle Laakmann McDowell's Cracking The Coding Interview 4th Ed.
+Personal solutions/extensions to some problems in Gayle Laakmann McDowell's Cracking The Coding Interview 4th Ed.
+
+James Lo (C) 2013.  
+https://github.com/jamestklo
+
