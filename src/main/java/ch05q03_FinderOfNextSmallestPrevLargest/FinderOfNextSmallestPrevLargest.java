@@ -1,7 +1,15 @@
 package ch05q03_FinderOfNextSmallestPrevLargest;
 
 import java.util.Stack;
-
+/*
+ * James TK Lo (C) 2013.  All rights reserved.  https://github.com/jamestklo
+ * Personal implementation(s) in Java, for calculating the binary representation of a decimal number.
+ *   
+Cracking The Coding Interview 4th Edition, Question 5.3
+Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation.
+ *
+ * a solution cleaner than the book's, not yet support negative numbers
+ */
 public class FinderOfNextSmallestPrevLargest {
 	private static final int NUM_BITS = 32;	
 	public static int binaryToInteger(String bits) {
