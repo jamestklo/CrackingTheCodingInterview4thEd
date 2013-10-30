@@ -92,7 +92,7 @@ public class FinderOfNextSmallestPrevLargest {
 		return integerToBinary(findNextSmallest(binaryToInteger(input)));
 	}
 	public static int findPrevLargest(int input) {
-		return find(input, input >= 0);
+		return find(input, input < 0);
 	}
 	private static String findPrevLargest(String input) {
 		return integerToBinary(findPrevLargest(binaryToInteger(input)));
