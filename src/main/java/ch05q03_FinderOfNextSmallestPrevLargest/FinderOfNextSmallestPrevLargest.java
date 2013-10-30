@@ -63,7 +63,12 @@ public class FinderOfNextSmallestPrevLargest {
 				case MOST_POSITIVE:	return MOST_POSITIVE;	// next smallest of the most positive number
 			}
 		}
-		else {
+		// input is a (power of 2) - 1
+		else if ( (input & (input+1)) == 0) {
+			// 1
+			// 11
+			// 111
+			
 			switch(input) {
 				case MOST_NEGATIVE:	return 1;				// next smallest of the most negative number
 				case -2:			return MOST_POSITIVE;	// next smallest of -2
@@ -76,7 +81,7 @@ public class FinderOfNextSmallestPrevLargest {
 		int count = -1;
 		int first = NUM_BITS;
 		int biti = bit?1:0;
-		for (int i=0; i < NUM_BITS; ++i, copy>>>=1) {
+		for (int i=0; i < NUM_BITS; ++i, copy>>=1) {
 			if ((copy & 1) == biti) {
 				++count;
 			}
@@ -89,7 +94,7 @@ public class FinderOfNextSmallestPrevLargest {
 		if (bit) {
 			return ( input & (~0-mask+1) ) | mask | ((1<<count)-1);	
 		}
-		System.out.println("count="+ count);
+		System.out.println("input="+input +" count="+ count);
 		mask <<= 1;
 		int right = 1 << (first-count);
 		right = right -1;
