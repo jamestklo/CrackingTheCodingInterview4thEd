@@ -44,7 +44,7 @@ public class FinderOfNextSmallestPrevLargest {
 	protected static final int POS_BITS = NUM_BITS-2;
 	protected static final int MOST_POSITIVE = ((1<<POS_BITS) -1) + (1<<POS_BITS);
 	protected static final int MOST_NEGATIVE = 0-MOST_POSITIVE;
-	protected static int find(int input, boolean bit) {
+	protected static int find(int input, boolean bit) {		
 		switch (input) {
 			case -1:	return -1;
 			case 0:		return 0;
@@ -67,8 +67,9 @@ public class FinderOfNextSmallestPrevLargest {
 		int copy  = input;
 		int count = -1;
 		int first = NUM_BITS;
+		int biti = bit?1:0;
 		for (int i=0; i < NUM_BITS; ++i, copy>>=1) {
-			if ((copy & 1) == 1) {
+			if ((copy & 1) == biti) {
 				++count;
 			}
 			else if (count >= 0) {
