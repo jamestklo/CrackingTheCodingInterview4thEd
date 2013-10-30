@@ -3,4 +3,11 @@
   <groupId>ca.ubc.tklo</groupId>
   <artifactId>CrackingTheCodingInterview4thEd</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.google.guava</groupId>
+  		<artifactId>guava</artifactId>
+  		<version>15.0</version>
+  	</dependency>
+  </dependencies>
 </project>

@@ -1,6 +1,11 @@
 package ch05q03_FinderOfNextSmallestPrevLargest;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Stack;
+
+import com.google.common.base.Joiner;
 /*
  * James TK Lo (C) 2013.  All rights reserved.  https://github.com/jamestklo
  * Personal implementation(s) in Java, for calculating the binary representation of a decimal number.
@@ -21,6 +26,9 @@ public class FinderOfNextSmallestPrevLargest {
 		return output;
 	}
 	public static final String integerToBinary(int input) {
+		if (input == 0) {
+			return "0";
+		}
 		int copy = input;
 		Stack<String> stack = new Stack<String>();
 		while (copy != 0) {
@@ -43,7 +51,7 @@ public class FinderOfNextSmallestPrevLargest {
 	protected static final int NUM_BITS = 32;
 	protected static final int POS_BITS = NUM_BITS-2;
 	protected static final int MOST_POSITIVE = ((1<<POS_BITS) -1) + (1<<POS_BITS);
-	protected static final int MOST_NEGATIVE = 0-MOST_POSITIVE;
+	protected static final int MOST_NEGATIVE = -1-MOST_POSITIVE;
 	protected static int find(int input, boolean bit) {		
 		switch (input) {
 			case -1:	return -1;
@@ -68,7 +76,7 @@ public class FinderOfNextSmallestPrevLargest {
 		int count = -1;
 		int first = NUM_BITS;
 		int biti = bit?1:0;
-		for (int i=0; i < NUM_BITS; ++i, copy>>=1) {
+		for (int i=0; i < NUM_BITS; ++i, copy>>>=1) {
 			if ((copy & 1) == biti) {
 				++count;
 			}
@@ -81,6 +89,7 @@ public class FinderOfNextSmallestPrevLargest {
 		if (bit) {
 			return ( input & (~0-mask+1) ) | mask | ((1<<count)-1);	
 		}
+		System.out.println("count="+ count);
 		mask <<= 1;
 		int right = 1 << (first-count);
 		right = right -1;
@@ -99,7 +108,31 @@ public class FinderOfNextSmallestPrevLargest {
 		return integerToBinary(findPrevLargest(binaryToInteger(input)));
 	}	
 	public static void main(String[] args) {
-		System.out.println(findNextSmallest("1011100"));
-		System.out.println(findPrevLargest("1100011"));
+		List<String> strlist = new ArrayList<String>();
+		strlist.add("1011100");
+		strlist.add(integerToBinary(0));		
+		strlist.add(integerToBinary(-1));
+		strlist.add(integerToBinary(MOST_NEGATIVE));
+		strlist.add(integerToBinary(1));
+		strlist.add(integerToBinary(MOST_POSITIVE));
+		strlist.add(integerToBinary(-2));
+		strlist.add(integerToBinary(3));
+		strlist.add(integerToBinary(-3));		
+		ListIterator<String> str_itr = strlist.listIterator();
+		while (str_itr.hasNext()) {
+			String next = str_itr.next();
+			int nextInteger = binaryToInteger(next);
+			String smallest = findNextSmallest(next);
+			String largest  = findPrevLargest(next);
+			String[] parts = new String[6];			
+			parts[0] = next;
+			parts[1] = ""+nextInteger;
+			parts[2] = ""+smallest;
+			parts[3] = ""+findPrevLargest(smallest);
+			parts[4] = ""+largest;
+			parts[5] = ""+findNextSmallest(largest);
+			System.out.println(Joiner.on("\n").join(parts));
+			System.out.println("");
+		}
 	}
 }
