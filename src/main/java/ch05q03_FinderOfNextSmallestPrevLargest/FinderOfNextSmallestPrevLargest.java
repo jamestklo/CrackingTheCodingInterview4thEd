@@ -40,22 +40,22 @@ public class FinderOfNextSmallestPrevLargest {
 		return sb.toString();
 	}
 	
-	public static final int NUM_BITS = 32;
-	public static final int POS_BITS = NUM_BITS-2;
-	public static final int MOST_POSITIVE = ((1<<POS_BITS) -1) + (1<<POS_BITS);
-	public static final int MOST_NEGATIVE = 0-MOST_POSITIVE;
-	public static int find(int input, int bit) {
+	protected static final int NUM_BITS = 32;
+	protected static final int POS_BITS = NUM_BITS-2;
+	protected static final int MOST_POSITIVE = ((1<<POS_BITS) -1) + (1<<POS_BITS);
+	protected static final int MOST_NEGATIVE = 0-MOST_POSITIVE;
+	protected static int find(int input, boolean bit) {
 		switch (input) {
 			case -1:	return -1;
 			case 0:		return 0;
 		}
-		if (bit == 1) { 
+		if (bit) { 
 			switch (input) {
 				case MOST_NEGATIVE:	return MOST_NEGATIVE;	// previous largest of the most negative number
 				case MOST_POSITIVE:	return MOST_POSITIVE;	// next smallest of the most positive number
 			}
 		}
-		else if (bit == 0) {
+		else {
 			switch(input) {
 				case MOST_NEGATIVE:	return 1;				// next smallest of the most negative number
 				case -2:			return MOST_POSITIVE;	// next smallest of -2
@@ -68,7 +68,7 @@ public class FinderOfNextSmallestPrevLargest {
 		int count = -1;
 		int first = NUM_BITS;
 		for (int i=0; i < NUM_BITS; ++i, copy>>=1) {
-			if ((copy & 1) == bit) {
+			if ((copy & 1) == 1) {
 				++count;
 			}
 			else if (count >= 0) {
@@ -77,7 +77,7 @@ public class FinderOfNextSmallestPrevLargest {
 			}
 		}
 		int mask = 1 << first;
-		if (bit == 1) {
+		if (bit) {
 			return ( input & (~0-mask+1) ) | mask | ((1<<count)-1);	
 		}
 		mask <<= 1;
@@ -86,15 +86,15 @@ public class FinderOfNextSmallestPrevLargest {
 		return ( input & (~0-mask+1) ) | (right<<count);					
 	}
 	public static int findNextSmallest(int input) {
-		return find(input, (input >= 0)?1:0);
+		return find(input, input >= 0);
 	}
-	public static String findNextSmallest(String input) {
+	private static String findNextSmallest(String input) {
 		return integerToBinary(findNextSmallest(binaryToInteger(input)));
 	}
 	public static int findPrevLargest(int input) {
-		return find(input, (input >= 0)?0:1);
+		return find(input, input >= 0);
 	}
-	public static String findPrevLargest(String input) {
+	private static String findPrevLargest(String input) {
 		return integerToBinary(findPrevLargest(binaryToInteger(input)));
 	}	
 	public static void main(String[] args) {
