@@ -56,13 +56,13 @@ public class FinderOfNextSmallestPrevLargest {
 			case -1:	return -1;
 			case 0:		return 0;
 		}
-		if (bit && input==MOST_POSITIVE) {
-			// next smallest of the most positive number
-			return MOST_POSITIVE;	
+		if (bit && input == MOST_POSITIVE) {
+			// 	next smallest of the most positive number
+			return MOST_POSITIVE;
 		}
-		else if (input == MOST_NEGATIVE){
-			// previous largest of the most negative number
-			return MOST_NEGATIVE;	
+		else if (input == MOST_NEGATIVE) {
+			// previous largest of the most negative number			
+			return MOST_NEGATIVE;
 		}
 		
 		int copy  = input;
@@ -82,6 +82,9 @@ public class FinderOfNextSmallestPrevLargest {
 		if (first == NUM_BITS) {			
 			mask -= 1;
 			++count;
+		}
+		else if (first == NUM_BITS-1) {
+			return input;
 		}
 
 		if (bit) {
@@ -107,6 +110,8 @@ public class FinderOfNextSmallestPrevLargest {
 	public static void main(String[] args) {
 		List<String> strlist = new ArrayList<String>();
 		strlist.add("1011100");
+		strlist.add("01000000000000000000000000000000");
+		strlist.add("10111111111111111111111111111111");
 		strlist.add(integerToBinary(0));		
 		strlist.add(integerToBinary(-1));
 		strlist.add(integerToBinary(MOST_NEGATIVE));
@@ -125,9 +130,9 @@ public class FinderOfNextSmallestPrevLargest {
 			String smallest = findNextSmallest(next);
 			String largest  = findPrevLargest(next);
 			String[] parts = new String[3];			
-			parts[0] = next						+"\t"+	nextInteger;
-			parts[1] = findPrevLargest(smallest)+"\t"+	smallest;
-			parts[2] = findNextSmallest(largest)+"\t"+	largest;
+			parts[0] = next						+"\t"+	nextInteger +"\t";
+			parts[1] = findPrevLargest(smallest)+"\t"+	smallest	+"\t"+ binaryToInteger(smallest);
+			parts[2] = findNextSmallest(largest)+"\t"+	largest		+"\t"+ binaryToInteger(largest);
 			System.out.println(Joiner.on("\n").join(parts));
 			System.out.println("");
 		}

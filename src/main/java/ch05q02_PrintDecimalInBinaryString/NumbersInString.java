@@ -16,8 +16,16 @@ If the number can not be represented accurately in binary, print “ERROR”ee.
  */
 public class NumbersInString {
 
-	static int ONE = 1;
-	static int NUM_BITS = 32;
+	final static int NUM_BITS = countbits();
+	private static final int countbits() {
+		int input = -1;
+		int count = 0;
+		while (input != 0) {
+			input >>>= 1;
+			++count;
+		}
+		return count;
+	}
 	public static String printBinary(String n) {
 		if (n == null || n.equals("")) {
 			return n;
@@ -29,7 +37,7 @@ public class NumbersInString {
 		int intPart = Integer.parseInt( (point > 0)?n.substring(0, point):n );
 		Stack<Integer> intStck = new Stack<Integer>();
 		while(intPart != 0) {
-			intStck.add(intPart & ONE);
+			intStck.add(intPart & 1);
 			intPart >>>= 1;		// using unsigned operator to shift bits
 		}
 		while (! intStck.empty()) {
