@@ -13,7 +13,7 @@ import com.google.common.base.Joiner;
 Cracking The Coding Interview 4th Edition, Question 5.3
 Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation.
  *
- * a solution cleaner than the book's, not yet support negative numbers
+ * a solution cleaner than the book's
  */
 public class FinderOfNextSmallestPrevLargest {
 	public static int binaryToInteger(String bits) {
