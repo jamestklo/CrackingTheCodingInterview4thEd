@@ -57,19 +57,13 @@ public class FinderOfNextSmallestPrevLargest {
 			case -1:	return -1;
 			case 0:		return 0;
 		}
-		if (bit) { 
-			switch (input) {				
-				case MOST_NEGATIVE:	return 1;				// next smallest of the most negative number
-				case -2:			return MOST_POSITIVE;	// next smallest of -2
-				case MOST_POSITIVE:	return MOST_POSITIVE;	// next smallest of the most positive number
-			}
+		if (bit && input==MOST_POSITIVE) {
+			// next smallest of the most positive number
+			return MOST_POSITIVE;	
 		}
-		else {
-			switch(input) {
-				case MOST_NEGATIVE:	return MOST_NEGATIVE;	// previous largest of the most negative number				
-				case 1:				return MOST_NEGATIVE;	// previous largest of 1
-				case MOST_POSITIVE:	return -2;				// previous largest of the most positive number
-			}
+		else if (input == MOST_NEGATIVE){
+			// previous largest of the most negative number
+			return MOST_NEGATIVE;	
 		}
 		
 		int copy  = input;
