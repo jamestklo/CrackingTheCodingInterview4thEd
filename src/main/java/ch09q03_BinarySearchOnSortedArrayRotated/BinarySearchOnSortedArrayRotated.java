@@ -14,9 +14,9 @@ Given a sorted array of n integers that has been rotated an unknown number of ti
  */
 public class BinarySearchOnSortedArrayRotated {
 	public static int search(int a[], int target) {
-		int l=0, u=a.length;
+		int l=0, u=a.length-1;
 		while (l <= u) {
-			int m = l + (u-l)/2;
+			int m = l + (u-l)/2; // different from book's "(l+u)/2": to prevent overflow
 			if (target == a[m]) {
 				return m;
 			}
