@@ -8,7 +8,7 @@ import java.util.Stack;
 import com.google.common.base.Joiner;
 /*
  * James TK Lo (C) 2013.  All rights reserved.  https://github.com/jamestklo
- * Personal implementation(s) in Java, for calculating the binary representation of a decimal number.
+ * Personal implementation(s) in Java, for calculating smallest next number AND largest previous number that have the same number of "1" bits as the input.
  *   
 Cracking The Coding Interview 4th Edition, Question 5.3
 Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation.
