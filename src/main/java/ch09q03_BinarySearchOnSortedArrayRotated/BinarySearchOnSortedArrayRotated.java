@@ -1,7 +1,7 @@
 package ch09q03_BinarySearchOnSortedArrayRotated;
 /*
  * James TK Lo (C) 2013.  All rights reserved.  https://github.com/jamestklo
- * Personal implementation(s) in Java, for calculating the binary representation of a decimal number.
+ * Personal implementation(s) in Java, for finding an integer in a rotated, sorted array
  *   
 Cracking The Coding Interview 4th Edition, Question 9.3
 Given a sorted array of n integers that has been rotated an unknown number of times, give an O(log n) algorithm that finds an element in the array.
